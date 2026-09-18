@@ -12,6 +12,7 @@ namespace Ucu.Poo.RolePlayGame
         public int VidaMaxima{get; protected set;}
         public int Defensa{get; private set;}
         public List<Item> Items {get; private set;}
+        public int BonusAtaque{get; private set;}
         public Personaje(string nombre, int defensa, int vidaMaxima)
         {
             this.Nombre= nombre;
@@ -40,9 +41,14 @@ namespace Ucu.Poo.RolePlayGame
         {
             this.Items.Remove(item);
         }
-        public void Atacar(Personaje objetivo, int daño)
+        public void AumentarBonusAtaque(int cantidad)
         {
-            objetivo.RecibirDaño(daño);
+            this.BonusAtaque+=cantidad;
+        }
+        public void Atacar(Personaje objetivo, int dañoBase)
+        {
+            int dañoTotal = dañoBase + this.BonusAtaque;
+            objetivo.RecibirDaño(dañoTotal);
         }
 
 
