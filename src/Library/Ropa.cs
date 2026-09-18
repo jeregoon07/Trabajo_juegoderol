@@ -1,3 +1,4 @@
+using System;
 namespace Ucu.Poo.RolePlayGame
 {
     // Lo mismo que con arma, muestra que ropa hereda de item
