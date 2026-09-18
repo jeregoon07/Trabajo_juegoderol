@@ -11,8 +11,8 @@ namespace Ucu.Poo.RolePlayGame
         {
             foreach (Item item in this.Items)
             {
-                // Casteo seguro usando 'as'
                 LibroDeHechizos libro = item as LibroDeHechizos;
+                
                 if (libro != null)
                 {
                     libro.AgregarHechizo(hechizo);
@@ -20,7 +20,6 @@ namespace Ucu.Poo.RolePlayGame
                 }
             }
         }
-
         public void AtacarConMagia(Personaje objetivo, Hechizo hechizo)
         {
             int dañoTotal = hechizo.Poder;
@@ -28,6 +27,7 @@ namespace Ucu.Poo.RolePlayGame
             foreach (Item item in this.Items)
             {
                 BastonMagico baston = item as BastonMagico;
+                
                 if (baston != null)
                 {
                     dañoTotal += (int)baston.BuffeoDaño;
