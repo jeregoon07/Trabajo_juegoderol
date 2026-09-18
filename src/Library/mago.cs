@@ -4,14 +4,37 @@ namespace Ucu.Poo.RolePlayGame
 {
     public class Mago : Personaje
     {
-        public List<Hechizo> LibroHechizos { get; private set; }
         public Mago(string nombre) : base(nombre, 10, 100)
         {
-            this.LibroHechizos = new List<Hechizo>();
         }
         public void AprenderHechizo(Hechizo hechizo)
         {
-            this.LibroHechizos.Add(hechizo);
+            foreach (Item item in this.Items)
+            {
+                // Casteo seguro usando 'as'
+                LibroDeHechizos libro = item as LibroDeHechizos;
+                if (libro != null)
+                {
+                    libro.AgregarHechizo(hechizo);
+                    return; 
+                }
+            }
+        }
+
+        public void AtacarConMagia(Personaje objetivo, Hechizo hechizo)
+        {
+            int dañoTotal = hechizo.Poder;
+            
+            foreach (Item item in this.Items)
+            {
+                BastonMagico baston = item as BastonMagico;
+                if (baston != null)
+                {
+                    dañoTotal += (int)baston.BuffeoDaño;
+                }
+            }
+            
+            this.Atacar(objetivo, dañoTotal);
         }
     }
 }

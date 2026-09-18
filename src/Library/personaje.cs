@@ -8,8 +8,8 @@ namespace Ucu.Poo.RolePlayGame
     public abstract class Personaje
     {
         public string Nombre {get; private set;}
-        public int VidaActual{get; private set;}
-        public int VidaMaxima{get; private set;}
+        public int VidaActual{get; protected set;}
+        public int VidaMaxima{get; protected set;}
         public int Defensa{get; private set;}
         public List<Item> Items {get; private set;}
         public Personaje(string nombre, int defensa, int vidaMaxima)
