@@ -22,7 +22,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         }
         [Test]
         //test de cuando recibe daño critico el personaje
-        public void Recibir_daño()
+        public void Recibirdaño()
         {
             PersonajePrueba personaje= new PersonajePrueba("Aragorn", 10, 100);
             personaje.Curarse();
