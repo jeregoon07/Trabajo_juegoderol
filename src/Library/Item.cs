@@ -1,5 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
+    //super clase
     public class Item
     {
         public string Nombre { get; set; }

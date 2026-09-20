@@ -1,5 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
+    //clase unica entre sus pares
     public class Hechizo
     {
         public string Nombre { get; private set; }
