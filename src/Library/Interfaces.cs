@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace Ucu.Poo.RolePlayGame
 {
     public interface ICurable
@@ -29,4 +30,22 @@ namespace Ucu.Poo.RolePlayGame
     {
         int ValorMagico { get; }
     }
+    public interface IConsumible
+    {
+        bool FueConsumido { get; }
+        void Consumir(ICurable objetivo);
+    }
+
+    public interface IHechizo : IMagico
+    {
+    
+    }
+
+public interface IInventario
+{
+    IReadOnlyCollection<Item> Items { get; }
+    void AgregarItem(Item item);
+    void RemoverItem(Item item);
 }
+}
+
