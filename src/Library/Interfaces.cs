@@ -1,6 +1,16 @@
 using System.Collections.Generic;
+using Ucu.Poo.RolePlayGame;
+
 namespace Ucu.Poo.RolePlayGame
 {
+    public interface IHechizos
+{
+    
+    string Nombre { get; }
+    int CostoMana { get; }
+    int ValorAtaque { get; }
+    int ValorCuracion { get; }
+}
     public interface ICurable
     {
         int VidaActual { get; }
@@ -30,6 +40,29 @@ namespace Ucu.Poo.RolePlayGame
     {
         int ValorMagico { get; }
     }
+}
+
+public interface IDurable
+{
+    int Durabilidad{get;}
+    void Desgastar(int cantidad);
+}
+
+public interface ILibroDeHechizos
+{
+    IReadOnlyCollection<IHechizos> Hechizos { get; }
+
+    void AgregarHechizo(IHechizos hechizo);
+
+    IHechizos ConsultarHechizo(string nombreHechizo);
+}
+
+public interface IHabilidad
+{
+    string Nombre {get;}
+    int CostoEnergia{get;}
+    bool EsPasiva {get;}
+    void Ejecutar(Personaje usuario, Personaje objetivo);
     public interface IConsumible
     {
         bool FueConsumido { get; }

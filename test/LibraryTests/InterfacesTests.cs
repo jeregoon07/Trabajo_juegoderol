@@ -1,3 +1,4 @@
+using Microsoft.Testing.Platform.Extensions.CommandLine;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -111,6 +112,61 @@ namespace Ucu.Poo.RolePlayGame.Tests
             objetivo?.RecibirCuracion(this.ValorCuracion);
         }
     }
+    public class DurableTest
+    {
+        [Test]
+        public void ReducirDurabilidad()
+        {
+            Arma espada = new Arma("Espada", 50, durabilidad: 100);
+            int durabilidadInicial = espada.Durabilidad;
+            espada.Desgastar();
+            Assert.That(espada.Durabilidad, Is.LessThan(durabilidadInicial));
+        }
+    
+    [Test]
+    public void Desgastar_NoPermiteDurabilidadNegativa()
+    {
+        
+        Arma espada = new Arma("Espada Oxidada", 50, durabilidad: 5);
+
+        
+        espada.Desgastar();
+
+        
+        Assert.That(espada.Durabilidad, Is.EqualTo(0));
+    }
+    }
+    public class DefensaTests
+{
+    [Test]
+    public void DefenderReduceElDanio()
+    {
+        
+        IDefensa miArmaescudo = new Arma("Escudo de roble", 0, 100);
+        int danoEntrante = 40;
+
+        
+        int cantidadDano = miArmaescudo.Defender(danoEntrante);
+
+        
+        Assert.That(cantidadDano, Is.EqualTo(40));
+    }
+}
+    public class HabilidadTests
+    {
+        [Test]
+        public void EjecutarAplicaEfecoEnElObjetivo()
+        {
+            Personaje usuario= new Enano("Glimli", 100, 0, 100);
+            Personaje objetivo= new Enano("Orco", 100, 5, 100);
+            IHabilidad habilidad= (IHabilidad)usuario;
+            int vidaInicial= objetivo.VidaActual;
+            habilidad.Ejecutar(usuario, objetivo);
+            Assert.That(objetivo.VidaActual, Is.LessThan(vidaInicial));
+        }
+    }
+}
+
 
     public class ConsumibleTestnabo : IConsumible
     {
