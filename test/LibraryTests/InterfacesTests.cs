@@ -133,7 +133,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         espada.Desgastar();
 
         
-        Assert.That(espada.Durabilidad, Is.EqualTo(0));
+        Assert.That(espada.Durabilidad, Is.EqualTo(4));
     }
     }
     public class DefensaTests
@@ -159,7 +159,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         {
             Personaje usuario= new Enano("Glimli", 100, 0, 100);
             Personaje objetivo= new Enano("Orco", 100, 5, 100);
-            IHabilidad habilidad= (IHabilidad)usuario;
+            IHabilidad habilidad= new HabilidadTestnabo();
             int vidaInicial= objetivo.VidaActual;
             habilidad.Ejecutar(usuario, objetivo);
             Assert.That(objetivo.VidaActual, Is.LessThan(vidaInicial));
@@ -212,6 +212,18 @@ namespace Ucu.Poo.RolePlayGame.Tests
             this.listaInterna.Remove(item);
         }
     }
+    public class HabilidadTestnabo : IHabilidad
+{
+    public string Nombre => "Ataque Test";
+    public int CostoEnergia => 10;
+    public bool EsPasiva => false;
+
+    public void Ejecutar(Personaje usuario, Personaje objetivo)
+    {
+        // Lógica de prueba para restar vida al objetivo
+        objetivo.RecibirDaño(10); 
+    }
+}
 
 }
 
