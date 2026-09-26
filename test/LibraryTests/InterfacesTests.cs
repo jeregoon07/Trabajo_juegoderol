@@ -1,5 +1,6 @@
 using Microsoft.Testing.Platform.Extensions.CommandLine;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Ucu.Poo.RolePlayGame.Tests
 {
@@ -44,7 +45,40 @@ namespace Ucu.Poo.RolePlayGame.Tests
         {
             Assert.DoesNotThrow(() => this.pocion.Curar(null));
         }
+
+        [Test]
+        public void TestConsumibleCambiaEstadoAlUsarse()
+        {
+            IConsumible panLembas = new ConsumibleTestnabo(10);
+            Assert.That(panLembas.FueConsumido, Is.False);
+            
+            panLembas.Consumir(this.personaje);
+            
+            Assert.That(panLembas.FueConsumido, Is.True);
+            Assert.That(this.personaje.VidaActual, Is.EqualTo(110));
+        }
+
+        [Test]
+        public void TestHechizoTieneValorMagico()
+        {
+            IHechizo bolaDeFuego = new HechizoTestnabo(50);
+            Assert.That(bolaDeFuego.ValorMagico, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void TestInventarioAgregaYRemueveItems()
+        {
+            IInventario miInventario = new InventarioTestnabo();
+            Item itemFalso = null; 
+            
+            miInventario.AgregarItem(itemFalso);
+            Assert.That(miInventario.Items.Count, Is.EqualTo(1));
+
+            miInventario.RemoverItem(itemFalso);
+            Assert.That(miInventario.Items.Count, Is.EqualTo(0));
+        }
     }
+    
     public class PersonajeTestnabo : ICurable, IAtacable
     {
         public int VidaActual { get; private set; }
@@ -65,6 +99,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
             }
         }
     }
+    
     public class PocionTestnabo : ICuracion
     {
         public int ValorCuracion { get; }
@@ -132,3 +167,52 @@ namespace Ucu.Poo.RolePlayGame.Tests
     }
 }
 
+
+    public class ConsumibleTestnabo : IConsumible
+    {
+        public bool FueConsumido { get; private set; }
+        private int valorRestauracion;
+
+        public ConsumibleTestnabo(int valorRestauracion)
+        {
+            this.valorRestauracion = valorRestauracion;
+            this.FueConsumido = false;
+        }
+
+        public void Consumir(ICurable objetivo)
+        {
+            if (!this.FueConsumido)
+            {
+                objetivo?.RecibirCuracion(this.valorRestauracion);
+                this.FueConsumido = true;
+            }
+        }
+    }
+
+    public class HechizoTestnabo : IHechizo
+    {
+        public int ValorMagico { get; }
+
+        public HechizoTestnabo(int poderMagico)
+        {
+            this.ValorMagico = poderMagico;
+        }
+    }
+
+    public class InventarioTestnabo : IInventario
+    {
+        private List<Item> listaInterna = new List<Item>();
+        
+        public IReadOnlyCollection<Item> Items => this.listaInterna.AsReadOnly();
+
+        public void AgregarItem(Item item)
+        {
+            this.listaInterna.Add(item);
+        }
+
+        public void RemoverItem(Item item)
+        {
+            this.listaInterna.Remove(item);
+        }
+    }
+}

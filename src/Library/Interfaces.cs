@@ -63,5 +63,22 @@ public interface IHabilidad
     int CostoEnergia{get;}
     bool EsPasiva {get;}
     void Ejecutar(Personaje usuario, Personaje objetivo);
+    public interface IConsumible
+    {
+        bool FueConsumido { get; }
+        void Consumir(ICurable objetivo);
+    }
+
+    public interface IHechizo : IMagico
+    {
+    
+    }
+
+public interface IInventario
+{
+    IReadOnlyCollection<Item> Items { get; }
+    void AgregarItem(Item item);
+    void RemoverItem(Item item);
+}
 }
 
