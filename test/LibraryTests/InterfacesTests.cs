@@ -123,7 +123,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         public void EjecutarAplicaEfecoEnElObjetivo()
         {
             Personaje usuario= new Enano("Glimli", 100, 0, 100);
-            Personaje objetivo= new Enano("Orco", 100, 0, 100);
+            Personaje objetivo= new Enano("Orco", 100, 5, 100);
             IHabilidad habilidad= (IHabilidad)usuario;
             int vidaInicial= objetivo.VidaActual;
             habilidad.Ejecutar(usuario, objetivo);
