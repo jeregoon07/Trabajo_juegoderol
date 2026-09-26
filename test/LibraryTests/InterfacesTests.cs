@@ -1,3 +1,4 @@
+using Microsoft.Testing.Platform.Extensions.CommandLine;
 using NUnit.Framework;
 
 namespace Ucu.Poo.RolePlayGame.Tests
@@ -76,4 +77,29 @@ namespace Ucu.Poo.RolePlayGame.Tests
             objetivo?.RecibirCuracion(this.ValorCuracion);
         }
     }
+    public class DurableTest
+    {
+        [Test]
+        public void ReducirDurabilidad()
+        {
+            Arma espada = new Arma("Espada", 50, durabilidad: 100);
+            int durabilidadInicial = espada.Durabilidad;
+            espada.Desgastar();
+            Assert.That(espada.Durabilidad, Is.LessThan(durabilidadInicial));
+        }
+    
+    [Test]
+    public void Desgastar_NoPermiteDurabilidadNegativa()
+    {
+        // Arrange: Creamos un arma con durabilidad baja (ej. 5) y un desgaste alto (ej. 20)
+        Arma espada = new Arma("Espada Oxidada", 50, durabilidad: 5);
+
+        // Act: Ejecutamos el desgaste que superaría la durabilidad restante
+        espada.Desgastar();
+
+        // Assert: Comprobamos que la durabilidad quedó exactamente en 0 y no en -15
+        Assert.That(espada.Durabilidad, Is.EqualTo(0));
+    }
+    }
 }
+
