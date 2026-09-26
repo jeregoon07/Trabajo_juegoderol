@@ -165,9 +165,6 @@ namespace Ucu.Poo.RolePlayGame.Tests
             Assert.That(objetivo.VidaActual, Is.LessThan(vidaInicial));
         }
     }
-}
-
-
     public class ConsumibleTestnabo : IConsumible
     {
         public bool FueConsumido { get; private set; }
@@ -215,4 +212,8 @@ namespace Ucu.Poo.RolePlayGame.Tests
             this.listaInterna.Remove(item);
         }
     }
+
 }
+
+
+    

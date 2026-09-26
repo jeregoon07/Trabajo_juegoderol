@@ -63,6 +63,7 @@ public interface IHabilidad
     int CostoEnergia{get;}
     bool EsPasiva {get;}
     void Ejecutar(Personaje usuario, Personaje objetivo);
+}
     public interface IConsumible
     {
         bool FueConsumido { get; }
@@ -80,5 +81,5 @@ public interface IInventario
     void AgregarItem(Item item);
     void RemoverItem(Item item);
 }
-}
+
 

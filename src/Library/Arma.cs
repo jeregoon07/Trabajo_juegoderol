@@ -29,7 +29,7 @@ namespace Ucu.Poo.RolePlayGame
         get { return this.Ataque; } 
     }
 
-    // 2. IMPLEMENTACIÓN DE IDefensa (Para que cumpla con IDefensa)
+    
     public int ValorDefensa 
     { 
         get { return this.Defensa; } 
@@ -37,13 +37,12 @@ namespace Ucu.Poo.RolePlayGame
     // Método requerido por IAtaque
     public void Atacar(IAtacable objetivo)
     {
-        // Al atacar, desgastamos el arma y aplicamos daño si el objetivo existe
+        
         this.Desgastar();
         
         if (objetivo != null)
         {
-            // El objetivo procesa el daño recibido
-            // (Si en tu proyecto el método es distinto, ajustalo acá)
+            
         }
     }
 
