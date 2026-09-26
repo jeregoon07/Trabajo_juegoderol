@@ -3,6 +3,14 @@ using Ucu.Poo.RolePlayGame;
 
 namespace Ucu.Poo.RolePlayGame
 {
+    public interface IHechizos
+{
+    
+    string Nombre { get; }
+    int CostoMana { get; }
+    int ValorAtaque { get; }
+    int ValorCuracion { get; }
+}
     public interface ICurable
     {
         int VidaActual { get; }
@@ -42,10 +50,11 @@ public interface IDurable
 
 public interface ILibroDeHechizos
 {
-    IReadOnlyCollection<IHechizo> Hechizos{get;}
-    void AgregarHechizo(IHechizo hechizo);
-    IHechizo ConsultarHechizo (string nombreHechizo);
+    IReadOnlyCollection<IHechizos> Hechizos { get; }
 
+    void AgregarHechizo(IHechizos hechizo);
+
+    IHechizos ConsultarHechizo(string nombreHechizo);
 }
 
 public interface IHabilidad

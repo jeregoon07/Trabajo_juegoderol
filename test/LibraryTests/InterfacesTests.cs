@@ -91,15 +91,44 @@ namespace Ucu.Poo.RolePlayGame.Tests
     [Test]
     public void Desgastar_NoPermiteDurabilidadNegativa()
     {
-        // Arrange: Creamos un arma con durabilidad baja (ej. 5) y un desgaste alto (ej. 20)
+        
         Arma espada = new Arma("Espada Oxidada", 50, durabilidad: 5);
 
-        // Act: Ejecutamos el desgaste que superaría la durabilidad restante
+        
         espada.Desgastar();
 
-        // Assert: Comprobamos que la durabilidad quedó exactamente en 0 y no en -15
+        
         Assert.That(espada.Durabilidad, Is.EqualTo(0));
     }
+    }
+    public class DefensaTests
+{
+    [Test]
+    public void DefenderReduceElDanio()
+    {
+        
+        IDefensa miArmaescudo = new Arma("Escudo de roble", 0, 100);
+        int danoEntrante = 40;
+
+        
+        int cantidadDano = miArmaescudo.Defender(danoEntrante);
+
+        
+        Assert.That(cantidadDano, Is.EqualTo(40));
+    }
+}
+    public class HabilidadTests
+    {
+        [Test]
+        public void EjecutarAplicaEfecoEnElObjetivo()
+        {
+            Personaje usuario= new Enano("Glimli", 100, 0, 100);
+            Personaje objetivo= new Enano("Orco", 100, 0, 100);
+            IHabilidad habilidad= (IHabilidad)usuario;
+            int vidaInicial= objetivo.VidaActual;
+            habilidad.Ejecutar(usuario, objetivo);
+            Assert.That(objetivo.VidaActual, Is.LessThan(vidaInicial));
+        }
     }
 }
 
