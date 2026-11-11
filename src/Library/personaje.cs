@@ -45,10 +45,14 @@ namespace Ucu.Poo.RolePlayGame
         {
             this.BonusAtaque+=cantidad;
         }
-        public void Atacar(Personaje objetivo, int dañoBase)
+        public virtual void Atacar(
+            Personaje objetivo,
+            int dañoBase
+        )
         {
             int dañoTotal = dañoBase + this.BonusAtaque;
             objetivo.RecibirDaño(dañoTotal);
+        }
         }
 
 
