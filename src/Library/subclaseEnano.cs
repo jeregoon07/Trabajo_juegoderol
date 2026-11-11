@@ -4,7 +4,7 @@ using Ucu.Poo.RolePlayGame;
 namespace Ucu.Poo.RolePlayGame
 {
     // Acá se define la subclase 'Enano' que hereda con : los atributos y metodos de la clase personaje
-    public class Enano : Personaje
+    public class Enano : Heroe
     {
         // Atributo propio del Enano que representa alta resistencia física
         public int ResistenciaCorporal { get; private set; }

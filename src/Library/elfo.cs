@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Elfo:Personaje
+    public class Elfo:Heroe
     {
         public Elfo(string nombre, int defensa, int VidaMaxima): base(nombre, defensa, VidaMaxima)
         {}
