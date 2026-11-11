@@ -7,6 +7,7 @@ namespace Ucu.Poo.RolePlayGame
 {
     public abstract class Personaje
     {
+        //personaje es una superclase
         public string Nombre {get; private set;}
         public int VidaActual{get; protected set;}
         public int VidaMaxima{get; protected set;}

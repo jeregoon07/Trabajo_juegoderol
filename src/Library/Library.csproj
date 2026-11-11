@@ -3,6 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>6</LangVersion>
     <Nullable>disable</Nullable>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>

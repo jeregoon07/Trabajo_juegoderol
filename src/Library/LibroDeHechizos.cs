@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace Ucu.Poo.RolePlayGame
 {
+    //clase unica entre sus pares
     public class LibroDeHechizos : Item
     {
         public List<Hechizo> Hechizos { get; private set; }

@@ -2,7 +2,12 @@ using System.Collections.Generic;
 
 namespace Ucu.Poo.RolePlayGame
 {
+<<<<<<< HEAD
 public class Mago : Heroe
+=======
+    //clase hija de personaje
+    public class Mago : Personaje
+>>>>>>> refs/remotes/origin/main
     {
         public Mago(string nombre) : base(nombre, 10, 100)
         {
