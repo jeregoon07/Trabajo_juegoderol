@@ -22,3 +22,5 @@ namespace Ucu.Poo.RolePlayGame
         }
     }
 }
+
+// Para cuando vayamos a instanciar el enemigo Esqueleto Unicornio = Enemigo villano = new EsqueletoUnicornio();
