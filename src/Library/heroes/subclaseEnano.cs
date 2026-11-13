@@ -10,8 +10,8 @@ namespace Ucu.Poo.RolePlayGame
         public int ResistenciaCorporal { get; private set; }
         
         // Este es el constructor, recibe todos los datos necesarios para poder instanciar al Enano.
-        public Enano(string nombre, int defensa, int vidaMaxima, int resistenciaCorporal)
-        : base(nombre, defensa, vidaMaxima)
+        public Enano(string nombre, int defensa, int vidaMaxima, int resistenciaCorporal,int valorPuntosVictoria)
+        : base(nombre, defensa, vidaMaxima, valorPuntosVictoria)
         
     {
         // se le asigna el valor de la resistencia corporal a la propiedad de esa instancia.
