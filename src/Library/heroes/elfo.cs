@@ -6,7 +6,6 @@ namespace Ucu.Poo.RolePlayGame
     public class Elfo:Heroe
     
     //esta clase hereda de personaje. clase hija
-    public class Elfo:Personaje
     {
         public Elfo(string nombre, int defensa, int VidaMaxima): base(nombre, defensa, VidaMaxima)
         {}
