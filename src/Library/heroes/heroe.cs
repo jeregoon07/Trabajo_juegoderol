@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public abstract class Heroe : Personaje
+    public abstract class Heroe : PersonajeBase
     {
         protected Heroe(
             string nombre,
@@ -11,7 +11,7 @@ namespace Ucu.Poo.RolePlayGame
         }
 
         public override void Atacar(
-            Personaje objetivo,
+            IPersonaje objetivo,
             int dañoBase
         )
         {
