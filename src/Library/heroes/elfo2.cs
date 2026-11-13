@@ -2,7 +2,7 @@ namespace Ucu.Poo.RolePlayGame
 {
     public class Elfo : Heroe
     {
-        public Elfo(string nombre, int defensa, int VidaMaxima) : base(nombre, defensa, VidaMaxima)
+        public Elfo(string nombre, int defensa, int VidaMaxima,int valorPuntosVictoria) : base(nombre, defensa, VidaMaxima,valorPuntosVictoria)
         {
         }
 

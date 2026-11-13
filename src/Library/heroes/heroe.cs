@@ -5,8 +5,9 @@ namespace Ucu.Poo.RolePlayGame
         protected Heroe(
             string nombre,
             int defensa,
-            int vidaMaxima
-        ) : base(nombre, defensa, vidaMaxima)
+            int vidaMaxima,
+            int puntosVictoria
+        ) : base(nombre, defensa, vidaMaxima,puntosVictoria)
         {
         }
 

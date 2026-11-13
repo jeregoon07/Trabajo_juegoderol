@@ -4,7 +4,8 @@ namespace Ucu.Poo.RolePlayGame
 {
 public class Mago : Heroe
     {
-        public Mago(string nombre) : base(nombre, 10, 100)
+        public Mago(string nombre, int defensa, int vidaMaxima, int resistenciaCorporal,int valorPuntosVictoria)
+        : base(nombre, defensa, vidaMaxima, valorPuntosVictoria)
         {
         }
         public void AprenderHechizo(Hechizo hechizo)

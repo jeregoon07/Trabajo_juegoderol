@@ -8,7 +8,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AprenderHechizoConLibro()
         {
-            Mago mago = new Mago("Gandalf");
+            Mago mago = new Mago("Gandalf",30,20,40,50);
             LibroDeHechizos libro = new LibroDeHechizos("Grimorio Ancient", 100);
             mago.Items.Add(libro);
 
@@ -22,7 +22,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AprenderHechizoSinLibroNoFalla()
         {
-            Mago mago = new Mago("Gandalf");
+            Mago mago = new Mago("Gandalf",30,20,40,50);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
             Assert.DoesNotThrow(() => mago.AprenderHechizo(bolaDeFuego));
@@ -31,8 +31,8 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AtacarConMagiaSinBaston()
         {
-            Mago mago = new Mago("Gandalf");
-            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100);
+            Mago mago = new Mago("Gandalf",30,20,40,50);
+            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,20);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
             mago.AtacarConMagia(objetivo, bolaDeFuego);
@@ -43,11 +43,11 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AtacarConMagiaConBaston()
         {
-            Mago mago = new Mago("Gandalf");
+            Mago mago = new Mago("Gandalf",30,20,40,50);
             BastonMagico baston = new BastonMagico("Bastón Ancestral", 100, 20m, 10m);
             mago.Items.Add(baston);
 
-            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100);
+            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,30);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
             mago.AtacarConMagia(objetivo, bolaDeFuego);
