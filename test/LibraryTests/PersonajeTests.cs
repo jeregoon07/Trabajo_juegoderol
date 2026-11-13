@@ -3,7 +3,7 @@ using Ucu.Poo.RolePlayGame;
 namespace Ucu.Poo.RolePlayGame.Tests
 {
     
-    public class PersonajePrueba: Personaje
+    public class PersonajePrueba: PersonajeBase
     {
         public PersonajePrueba(string nombre, int defensa, int vidaMaxima) 
         : base(nombre, defensa, vidaMaxima){}

@@ -19,14 +19,14 @@ namespace Ucu.Poo.RolePlayGame
     }
 
     // Utiliza armas u otros elementos: colabora con Item y Prsonaje
-    public void UsarItem(Item item, Personaje objetivo)
+    public void UsarItem(Item item, IPersonaje objetivo)
         {
             //Se aplica el ataque al personaje objetivo segun el daño o ataque que posee tal item usado
             Atacar(objetivo, item.Ataque);
         }
 
     // Activa habilidades de combate según su temperamento
-    public void ActivarFuria(Personaje objetivo)
+    public void ActivarFuria(IPersonaje objetivo)
         {
             int dañoModificado = 20 + 10;
             Atacar(objetivo, dañoModificado);
