@@ -62,7 +62,7 @@ public interface IHabilidad
     string Nombre {get;}
     int CostoEnergia{get;}
     bool EsPasiva {get;}
-    void Ejecutar(Personaje usuario, Personaje objetivo);
+    void Ejecutar(IPersonaje usuario, IPersonaje objetivo);
 }
     public interface IConsumible
     {

@@ -1,4 +1,3 @@
-using Microsoft.Testing.Platform.Extensions.CommandLine;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -157,8 +156,8 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void EjecutarAplicaEfecoEnElObjetivo()
         {
-            Personaje usuario= new Enano("Glimli", 100, 0, 100);
-            Personaje objetivo= new Enano("Orco", 100, 5, 100);
+            IPersonaje usuario= new Enano("Glimli", 100, 0, 100);
+            IPersonaje objetivo= new Enano("Orco", 100, 5, 100);
             IHabilidad habilidad= new HabilidadTestnabo();
             int vidaInicial= objetivo.VidaActual;
             habilidad.Ejecutar(usuario, objetivo);
@@ -218,7 +217,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
     public int CostoEnergia => 10;
     public bool EsPasiva => false;
 
-    public void Ejecutar(Personaje usuario, Personaje objetivo)
+    public void Ejecutar(IPersonaje usuario, IPersonaje objetivo)
     {
         // Lógica de prueba para restar vida al objetivo
         objetivo.RecibirDaño(10); 
