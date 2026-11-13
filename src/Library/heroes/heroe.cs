@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public abstract class Heroe : PersonajeBase
+    public class Heroe : PersonajeBase
     {
         protected Heroe(
             string nombre,
