@@ -2,12 +2,7 @@ using System.Collections.Generic;
 
 namespace Ucu.Poo.RolePlayGame
 {
-<<<<<<< HEAD
 public class Mago : Heroe
-=======
-    //clase hija de personaje
-    public class Mago : Personaje
->>>>>>> refs/remotes/origin/main
     {
         public Mago(string nombre) : base(nombre, 10, 100)
         {
@@ -25,7 +20,7 @@ public class Mago : Heroe
                 }
             }
         }
-        public void AtacarConMagia(Personaje objetivo, Hechizo hechizo)
+        public void AtacarConMagia(IPersonaje objetivo, Hechizo hechizo)
         {
             int dañoTotal = hechizo.Poder;
             
