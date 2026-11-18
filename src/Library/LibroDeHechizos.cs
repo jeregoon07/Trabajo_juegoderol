@@ -1,22 +1,23 @@
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 namespace Ucu.Poo.RolePlayGame
 {
     //clase unica entre sus pares
     public class LibroDeHechizos : Item
     {
-        public List<Hechizo> Hechizos { get; private set; }
+        private List<Hechizo> hechizos;
+public ReadOnlyCollection<Hechizo> Hechizos { get { return this.hechizos.AsReadOnly(); } }
 
         public LibroDeHechizos(string nombre, int durabilidad) 
             : base(nombre, 0, 0, durabilidad)
         {
-            this.Hechizos = new List<Hechizo>();
+            this.hechizos = new List<Hechizo>();
         }
         public void AgregarHechizo(Hechizo hechizo)
         {
             if (hechizo != null)
             {
-                this.Hechizos.Add(hechizo);
+                this.hechizos.Add(hechizo);
                 ActualizarPoder();
             }
         }
@@ -24,7 +25,7 @@ private void ActualizarPoder()
         {
             int totalAtaque = 0;
             
-            foreach (Hechizo h in this.Hechizos)
+            foreach (Hechizo h in this.hechizos)
             {
                 totalAtaque += h.Poder; 
             }

@@ -123,7 +123,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
         }
     
     [Test]
-    public void Desgastar_NoPermiteDurabilidadNegativa()
+    public void DesgastarConDurabilidad5Queda4()
     {
         
         Arma espada = new Arma("Espada Oxidada", 50, durabilidad: 5);
@@ -138,7 +138,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
     public class DefensaTests
 {
     [Test]
-    public void DefenderReduceElDanio()
+    public void DefenderArmaSinDefensaNoeduceElDaño()
     {
         
         IDefensa miArmaescudo = new Arma("Escudo de roble", 0, 100);
@@ -154,12 +154,12 @@ namespace Ucu.Poo.RolePlayGame.Tests
     public class HabilidadTests
     {
         [Test]
-        public void EjecutarAplicaEfecoEnElObjetivo()
+        public void EjecutarAplicaEfectoEnElObjetivo()
         {
-            IPersonaje usuario= new Enano("Glimli", 100, 0, 100,20);
-            IPersonaje objetivo= new Enano("Orco", 100, 5, 100,20);
-            IHabilidad habilidad= new HabilidadTestnabo();
-            int vidaInicial= objetivo.VidaActual;
+            IPersonaje usuario = new Enano("Glimli", 0, 100, 0, 20);
+            IPersonaje objetivo = new Enano("Orco", 0, 6, 0, 20);
+            IHabilidad habilidad = new HabilidadTestnabo();
+            int vidaInicial = objetivo.VidaActual;
             habilidad.Ejecutar(usuario, objetivo);
             Assert.That(objetivo.VidaActual, Is.LessThan(vidaInicial));
         }
@@ -218,10 +218,9 @@ namespace Ucu.Poo.RolePlayGame.Tests
     public bool EsPasiva => false;
 
     public void Ejecutar(IPersonaje usuario, IPersonaje objetivo)
-    {
-        // Lógica de prueba para restar vida al objetivo
-        objetivo.RecibirDaño(10); 
-    }
+{
+    objetivo.RecibirDaño(10);
+}
 }
 
 }

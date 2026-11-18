@@ -16,6 +16,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
             elfo.Ayudar(aliado);
             Assert.That(aliado.VidaActual, Is.EqualTo(100));
         }
+        [Test]
         public void AumentarDañoAliado()
         {
             Elfo elfo = new Elfo("hobbit", 10, 100,30);
@@ -24,6 +25,7 @@ namespace Ucu.Poo.RolePlayGame.Tests
             elfo.UsarMagia(aliado,20);
             Assert.That(aliado.BonusAtaque, Is.GreaterThan(bonusInical));
         }
+        [Test]
         public void AtacarAotros()
         {
             Elfo elfo = new Elfo("hobbit", 10,100,30);

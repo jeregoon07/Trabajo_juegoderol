@@ -8,122 +8,65 @@ clases y sus atributos, operaciones y relaciones faltantes. La ventaja de usar
 
 ```mermaid
 classDiagram
-    %% Relaciones de Wizard
-    Wizard "1" --> "1" SpellsBook : has
-    Wizard "1" --> "1" Staff : has
+    Item <|-- Arma
+    Item <|-- Ropa
+    Item <|-- BastonMagico
+    Item <|-- LibroDeHechizos
+    PersonajeBase <|-- Heroe
+    PersonajeBase <|-- Enemigo
+    Heroe <|-- Mago
+    Heroe <|-- Elfo
+    Heroe <|-- Enano
+    Enemigo <|-- EsqueletoUnicornio
+    Enemigo <|-- ZombieMini
+    Enemigo <|-- Medusa
+    PersonajeBase "1" --> "*" Item : tiene
+    LibroDeHechizos "1" --> "*" Hechizo : contiene
+    Medusa "1" --> "1" Hechizo : MiradaPetrificante
+    EncuentroDeCombate ..|> IEncuentro
+    EncuentroDeCombate --> Heroe
+    EncuentroDeCombate --> Enemigo
 
-    %% Relaciones de Dwarf
-    Dwarf "1" --> "1" Axe : has
-    Dwarf "1" --> "1" Shield : has
-    Dwarf "1" --> "1" Helmet : has
-
-    %% Relaciones de Knight
-    Knight "1" --> "1" Sword : has
-    Knight "1" --> "1" Shield : has
-    Knight "1" --> "1" Armor : has
-
-    %% Relaciones de Archer
-    Archer "1" --> "1" Bow : has
-    Archer "1" --> "1" Helmet : has
-
-    %% Relación de SpellsBook con Spell
-    SpellsBook "1" --> "*" Spell : contiene
-
-    %% Clase Wizard
-    class Wizard{
-      +string Name
-      +SpellsBook SpellsBook
-      +Staff Staff
-      +int AttackValue
-      +int DefenseValue
-      +int Health
-      +Wizard(string name)
-      +ReceiveAttack(int power)
-      +Cure()
+    class Item {
+        +string Nombre
+        +int Ataque
+        +int Defensa
+        +int Durabilidad
     }
-
-    %% Clase Dwarf
-    class Dwarf{
-      +string Name
-      +Axe Axe
-      +Shield Shield
-      +Helmet Helmet
-      +int AttackValue
-      +int DefenseValue
-      +int Health
-      +Dwarf(string name)
-      +ReceiveAttack(int power)
-      +Cure()
+    class Arma { +int DesgastePorAtaque
+        +Desgastar() }
+    class Ropa { +AbsorberDaño(int) int }
+    class BastonMagico { +decimal BuffeoDaño
+        +decimal BuffeoVida }
+    class LibroDeHechizos { +AgregarHechizo(Hechizo) }
+    class Hechizo { +string Nombre
+        +int Poder }
+    class PersonajeBase {
+        <<abstract>>
+        +string Nombre
+        +int VidaActual
+        +int VidaMaxima
+        +int Defensa
+        +int BonusAtaque
+        +int PuntosVictoria
+        +bool EstaVivo
+        +int ValorAtaqueTotal
+        +int ValorDefensaTotal
+        +Atacar(IPersonaje, int)
+        +RecibirDaño(int)
+        +Curarse()
+        +AgregarItems(Item)
+        +SacarItems(Item)
+        +AumentarBonusAtaque(int)
+        +GanarPuntos(int)
     }
-
-    %% Clase Knight
-    class Knight{
-      +string Name
-      +Sword Sword
-      +Shield Shield
-      +Armor Armor
-      +int AttackValue
-      +int DefenseValue
-      +int Health
-      +Knight(string name)
-      +ReceiveAttack(int power)
-      +Cure()
-    }
-
-    %% Clase Archer
-    class Archer{
-      +string Name
-      +Bow Bow
-      +Helmet Helmet
-      +int AttackValue
-      +int DefenseValue
-      +int Health
-      +Archer(string name)
-      +ReceiveAttack(int power)
-      +Cure()
-    }
-
-    %% Clase SpellsBook
-    class SpellsBook{
-      ICollection<Spell> Spells
-      +int AttackValue
-      +int DefenseValue
-    }
-
-    %% Clase Spell
-    class Spell{
-      +int AttackValue
-      +int DefenseValue
-    }
-
-    %% Armas
-    class Axe{
-      +int AttackValue
-    }
-
-    class Sword{
-      +int AttackValue
-    }
-
-    class Bow{
-      +int AttackValue
-    }
-
-    class Staff{
-      +int AttackValue
-      +int DefenseValue
-    }
-
-    %% Defensas
-    class Shield{
-      +int DefenseValue
-    }
-
-    class Armor{
-      +int DefenseValue
-    }
-
-    class Helmet{
-      +int DefenseValue
-    }
+    class Heroe { <<abstract>> }
+    class Mago { +AprenderHechizo(Hechizo)
+        +AtacarConMagia(IPersonaje, Hechizo) }
+    class Elfo { +Ayudar(IPersonaje)
+        +UsarMagia(IPersonaje, int) }
+    class Enano { +int ResistenciaCorporal
+        +UsarItem(Item, IPersonaje)
+        +ActivarFuria(IPersonaje) }
+    class EncuentroDeCombate { +DoEncounter() }
 ```

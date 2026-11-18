@@ -37,13 +37,10 @@ namespace Ucu.Poo.RolePlayGame
     // Método requerido por IAtaque
     public void Atacar(IAtacable objetivo)
     {
-        
+        //atacar consume durabilidad del arma
         this.Desgastar();
         
-        if (objetivo != null)
-        {
-            
-        }
+        
     }
 
     // Método requerido por IDefensa

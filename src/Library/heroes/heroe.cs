@@ -1,6 +1,7 @@
 namespace Ucu.Poo.RolePlayGame
 {
-    public class Heroe : PersonajeBase
+    //Decisión de diseño: los héroes son aliados y no se atacan entre sí
+    public abstract class Heroe : PersonajeBase
     {
         protected Heroe(
             string nombre,
