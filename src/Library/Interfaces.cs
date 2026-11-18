@@ -71,9 +71,9 @@ public interface IHabilidad
     }
 
     public interface IHechizo : IMagico
-    {
-    
-    }
+    {}
+
+
 
 public interface IInventario
 {
@@ -81,5 +81,6 @@ public interface IInventario
     void AgregarItem(Item item);
     void RemoverItem(Item item);
 }
+
 
 

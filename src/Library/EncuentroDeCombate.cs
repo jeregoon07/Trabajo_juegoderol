@@ -71,7 +71,7 @@ namespace Ucu.Poo.RolePlayGame
 
             foreach (Heroe heroe in heroesVivos)
             {
-                if (heroe.VidaMaxima <= 0)
+                if (heroe.VidaActual <= 0)
                 {
                     continue;
                 }
@@ -82,9 +82,9 @@ namespace Ucu.Poo.RolePlayGame
                     // Cada héroe ataca al enemigo (ajusta según cómo implementes el ataque en tu juego)
                     heroe.Atacar(enemigo,dañoBase:20);
 
-                    if (enemigo.VidaMaxima <= 0)
+                    if (enemigo.VidaActual <= 0)
                     {
-                        heroe.PuntosVictoria += enemigo.PuntosVictoria;
+                        heroe.GanarPuntos(enemigo.PuntosVictoria);
                     }
                 }
             }
@@ -94,7 +94,7 @@ namespace Ucu.Poo.RolePlayGame
         {
             foreach (Heroe heroe in this.heroes)
             {
-                if (heroe.VidaMaxima > 0 && heroe.PuntosVictoria >= 5)
+                if (heroe.VidaActual > 0 && heroe.PuntosVictoria >= 5)
                 {
                     heroe.Curarse();
                 }
@@ -106,7 +106,7 @@ namespace Ucu.Poo.RolePlayGame
             List<Heroe> lista = new List<Heroe>();
             foreach (Heroe h in this.heroes)
             {
-                if (h.VidaMaxima > 0)
+                if (h.VidaActual > 0)
                 {
                     lista.Add(h);
                 }
@@ -119,7 +119,7 @@ namespace Ucu.Poo.RolePlayGame
             List<Enemigo> lista = new List<Enemigo>();
             foreach (Enemigo e in this.enemigos)
             {
-                if (e.VidaMaxima > 0)
+                if (e.VidaActual > 0)
                 {
                     lista.Add(e);
                 }
@@ -131,7 +131,7 @@ namespace Ucu.Poo.RolePlayGame
         {
             foreach (Heroe h in this.heroes)
             {
-                if (h.VidaMaxima > 0)
+                if (h.VidaActual > 0)
                 {
                     return true;
                 }
@@ -143,7 +143,7 @@ namespace Ucu.Poo.RolePlayGame
         {
             foreach (Enemigo e in this.enemigos)
             {
-                if (e.VidaMaxima > 0)
+                if (e.VidaActual > 0)
                 {
                     return true;
                 }

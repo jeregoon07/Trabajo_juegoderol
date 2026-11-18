@@ -33,17 +33,11 @@ namespace Ucu.Poo.RolePlayGame
         }
 
     // Posee alta resistencia corporal
-    public void RecibirDanioConResistencia(int daño)
-        {
-            // Resta al daño recibido tanto la defensa base del personaje como la resistencia corporal
-            int dañoReal = daño - (this.Defensa + this.ResistenciaCorporal);
-            
-            // Solo descuenta vida si el daño supera la protección combinada
-            if (dañoReal > 0)
-            {
-                //llama al metodo heredado RecibirDaño para descontar la vida actual
-                RecibirDaño(dañoReal);
-                        }
-        }
+    public override void RecibirDaño(int daño)
+{
+    int dañoReal = daño - (this.Defensa + this.ResistenciaCorporal);
+    if (dañoReal < 0) { dañoReal = 0; }
+    base.RecibirDaño(dañoReal);
+}
 }
 }

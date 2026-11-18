@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace Ucu.Poo.RolePlayGame.Tests
@@ -8,9 +9,9 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AprenderHechizoConLibro()
         {
-            Mago mago = new Mago("Gandalf",30,20,40,50);
+            Mago mago = new Mago("Gandalf",30,20,40);
             LibroDeHechizos libro = new LibroDeHechizos("Grimorio Ancient", 100);
-            mago.Items.Add(libro);
+            mago.AgregarItems(libro);
 
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
             mago.AprenderHechizo(bolaDeFuego);
@@ -20,19 +21,19 @@ namespace Ucu.Poo.RolePlayGame.Tests
         }
 
         [Test]
-        public void AprenderHechizoSinLibroNoFalla()
+        public void AprenderHechizoSinLibroLanzaExcepcion()
         {
-            Mago mago = new Mago("Gandalf",30,20,40,50);
+            Mago mago = new Mago("Gandalf",30,20,40);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
-            Assert.DoesNotThrow(() => mago.AprenderHechizo(bolaDeFuego));
+            Assert.Throws<InvalidOperationException>(() => mago.AprenderHechizo(bolaDeFuego));
         }
 
         [Test]
         public void AtacarConMagiaSinBaston()
         {
-            Mago mago = new Mago("Gandalf",30,20,40,50);
-            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,20);
+            Mago mago = new Mago("Gandalf",30,20,40);
+            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,0);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
             mago.AtacarConMagia(objetivo, bolaDeFuego);
@@ -43,11 +44,11 @@ namespace Ucu.Poo.RolePlayGame.Tests
         [Test]
         public void AtacarConMagiaConBaston()
         {
-            Mago mago = new Mago("Gandalf",30,20,40,50);
+            Mago mago = new Mago("Gandalf",30,20,40);
             BastonMagico baston = new BastonMagico("Bastón Ancestral", 100, 20m, 10m);
-            mago.Items.Add(baston);
+            mago.AgregarItems(baston);
 
-            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,30);
+            PersonajePrueba objetivo = new PersonajePrueba("Orco", 10, 100,0);
             Hechizo bolaDeFuego = new Hechizo("Bola de Fuego", 40);
 
             mago.AtacarConMagia(objetivo, bolaDeFuego);

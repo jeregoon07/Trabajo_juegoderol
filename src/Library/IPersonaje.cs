@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Runtime.Serialization;
-using System.Security.Cryptography.X509Certificates;
 namespace Ucu.Poo.RolePlayGame
 {
     public interface IPersonaje
@@ -10,9 +7,12 @@ namespace Ucu.Poo.RolePlayGame
         int VidaActual { get; }
         int VidaMaxima { get; }
         int Defensa { get; }
-        List<Item> Items { get; }
+        IReadOnlyCollection<Item> Items{get;}
         int BonusAtaque { get; }
-        int PuntosVictoria { get; } // Nuevo para juntar VP
+        int PuntosVictoria { get; } 
+        int ValorAtaqueTotal{get;}
+
+        int ValorDefensaTotal{get;}
         void Curarse();
         void RecibirDaño(int daño);
         void AgregarItems(Item item);
