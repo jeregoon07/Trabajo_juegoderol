@@ -10,27 +10,27 @@ public class Mago : Heroe
         }
         public void AprenderHechizo(Hechizo hechizo)
 {
-    if (hechizo == null) { throw new ArgumentNullException(nameof(hechizo)); }
-
     foreach (Item item in this.Items)
+{
+    LibroDeHechizos libro = item as LibroDeHechizos;
+    if (libro != null)
     {
-        if (item is LibroDeHechizos libro)
-        {
-            libro.AgregarHechizo(hechizo);
-            return;
-        }
+        libro.AgregarHechizo(hechizo);
+        return;
     }
+}
 
     // Si llegó hasta acá, el mago no tenía ningún libro.
     throw new InvalidOperationException("El mago no tiene un libro de hechizos.");
 }
         public void AtacarConMagia(IPersonaje objetivo, Hechizo hechizo)
         {
-            int dañoTotal = hechizo.Poder;
+            
             if(hechizo==null)
             {
                 throw new ArgumentNullException(nameof(hechizo));
             }
+            int dañoTotal = hechizo.Poder;
             
             foreach (Item item in this.Items)
             {
