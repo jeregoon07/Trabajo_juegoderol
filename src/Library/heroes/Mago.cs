@@ -9,7 +9,9 @@ public class Mago : Heroe
         {
         }
         public void AprenderHechizo(Hechizo hechizo)
+        
 {
+    if (hechizo == null) { throw new ArgumentNullException(nameof(hechizo)); }
     foreach (Item item in this.Items)
 {
     LibroDeHechizos libro = item as LibroDeHechizos;
